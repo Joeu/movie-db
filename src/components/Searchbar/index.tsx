@@ -17,7 +17,12 @@ const SearchBar = () => {
 
   return (
     <div className="container">
-      <input type="text" onChange={handleChange} value={inputValue} />
+      <input
+        id="search-input"
+        type="text"
+        onChange={handleChange}
+        value={inputValue}
+      />
       <span className="container__icon" onClick={handleSearch}>
         <AiOutlineSearch color="gray" size={24} />
       </span>
