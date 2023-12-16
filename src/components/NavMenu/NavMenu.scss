@@ -1,11 +1,19 @@
 nav {
+  font-size: 20px;
+  font-weight: bold;
+
   a {
     margin-right: 12px;
     text-decoration: none;
-    color: blue;
 
-    &:visited {
-      color: blue;
+    &:hover {
+      color: lightcoral;
     }
+
+    transition: 0.2s;
   }
+}
+
+.selected {
+  text-decoration: underline;
 }
