@@ -1,31 +1,21 @@
 import React from "react";
-import Rating from "../Rating";
 
-const Card = () => {
+type CardProps = {
+  item: any;
+};
+
+const Card = (props: CardProps) => {
+  const { item } = props;
   return (
-    <div className="card">
-      <div className="card__header">
-        <h2>Movie Title</h2>
-        <Rating />
-      </div>
-      <section className="card__info">
-        <div className="card__cover">
-          <div>
-            <image />
-          </div>
-          <div>short desc</div>
+    <section className="card">
+      <h3>{item.title}</h3>
+      <div className="card__cover">
+        <div>
+          <image />
         </div>
-        <article className="card__sinopsis">
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quisquam
-          voluptates, hic natus quae doloremque facere iure magni qui excepturi,
-          porro ipsam quia. Iure, facilis maxime? Ipsa perferendis voluptate
-          doloremque sit! Lorem ipsum dolor sit amet consectetur adipisicing
-          elit. Quasi soluta neque fugiat ut. Neque iure nulla corrupti
-          consequuntur laudantium debitis, quisquam earum quo, doloribus
-          voluptate temporibus voluptatum unde aperiam quia?
-        </article>
-      </section>
-    </div>
+        <div>{item.vote_average}</div>
+      </div>
+    </section>
   );
 };
 

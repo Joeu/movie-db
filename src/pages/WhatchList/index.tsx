@@ -1,5 +1,4 @@
 import React from "react";
-import Card from "../../components/Card";
 import List from "../../components/List";
 
 import dummy from "../../assets/dummydata.json";

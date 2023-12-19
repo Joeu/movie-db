@@ -44,6 +44,8 @@
   },
   "devDependencies": {
     "@types/react-router-dom": "^5.3.3",
+    "axios": "^1.6.2",
+    "react-query": "^3.39.3",
     "sass": "^1.69.5"
   }
 }
