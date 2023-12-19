@@ -12,7 +12,7 @@ const Grid = (props: GridProps) => {
       <h1>Trending this week</h1>
       <section className="grid">
         {data?.map((item) => (
-          <Card item={item} />
+          <Card key={item.id} item={item} />
         ))}
       </section>
     </>

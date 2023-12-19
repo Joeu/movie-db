@@ -8,10 +8,15 @@ const Card = (props: CardProps) => {
   const { item } = props;
   return (
     <section className="card">
-      <h3>{item.title}</h3>
+      <div className="card__title">
+        <p>{item.title}</p>
+      </div>
       <div className="card__cover">
         <div>
-          <image />
+          <img
+            src={`https://image.tmdb.org/t/p/w200${item.poster_path}`}
+            alt={`Poster for ${item.title}`}
+          />
         </div>
         <div>{item.vote_average}</div>
       </div>
