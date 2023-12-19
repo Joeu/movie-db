@@ -1,0 +1,39 @@
+{
+  "movies": [
+    {
+      "id": 1,
+      "title": "Movie Title",
+      "year": "1999",
+      "cover": "someUrl",
+      "sinopsis": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quisquam voluptates, hic natus quae doloremque facere iure magni qui excepturi,porro ipsam quia. Iure, facilis maxime? Ipsa perferendis voluptatedoloremque sit! Lorem ipsum dolor sit amet consectetur adipisicingelit. Quasi soluta neque fugiat ut. Neque iure nulla corrupticonsequuntur laudantium debitis, quisquam earum quo,doloribusvoluptate temporibus voluptatum unde aperiam quia?"
+    },
+    {
+      "id": 2,
+      "title": "Movie Title",
+      "year": "1999",
+      "cover": "someUrl",
+      "sinopsis": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quisquam voluptates, hic natus quae doloremque facere iure magni qui excepturi,porro ipsam quia. Iure, facilis maxime? Ipsa perferendis voluptatedoloremque sit! Lorem ipsum dolor sit amet consectetur adipisicingelit. Quasi soluta neque fugiat ut. Neque iure nulla corrupticonsequuntur laudantium debitis, quisquam earum quo,doloribusvoluptate temporibus voluptatum unde aperiam quia?"
+    },
+    {
+      "id": 3,
+      "title": "Movie Title",
+      "year": "1999",
+      "cover": "someUrl",
+      "sinopsis": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quisquam voluptates, hic natus quae doloremque facere iure magni qui excepturi,porro ipsam quia. Iure, facilis maxime? Ipsa perferendis voluptatedoloremque sit! Lorem ipsum dolor sit amet consectetur adipisicingelit. Quasi soluta neque fugiat ut. Neque iure nulla corrupticonsequuntur laudantium debitis, quisquam earum quo,doloribusvoluptate temporibus voluptatum unde aperiam quia?"
+    },
+    {
+      "id": 4,
+      "title": "Movie Title",
+      "year": "1999",
+      "cover": "someUrl",
+      "sinopsis": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quisquam voluptates, hic natus quae doloremque facere iure magni qui excepturi,porro ipsam quia. Iure, facilis maxime? Ipsa perferendis voluptatedoloremque sit! Lorem ipsum dolor sit amet consectetur adipisicingelit. Quasi soluta neque fugiat ut. Neque iure nulla corrupticonsequuntur laudantium debitis, quisquam earum quo,doloribusvoluptate temporibus voluptatum unde aperiam quia?"
+    },
+    {
+      "id": 5,
+      "title": "Movie Title",
+      "year": "1999",
+      "cover": "someUrl",
+      "sinopsis": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quisquam voluptates, hic natus quae doloremque facere iure magni qui excepturi,porro ipsam quia. Iure, facilis maxime? Ipsa perferendis voluptatedoloremque sit! Lorem ipsum dolor sit amet consectetur adipisicingelit. Quasi soluta neque fugiat ut. Neque iure nulla corrupticonsequuntur laudantium debitis, quisquam earum quo,doloribusvoluptate temporibus voluptatum unde aperiam quia?"
+    }
+  ]
+}

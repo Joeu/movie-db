@@ -1,11 +1,12 @@
 import React from "react";
+import Rating from "../Rating";
 
 const Card = () => {
   return (
     <div className="card">
       <div className="card__header">
         <h2>Movie Title</h2>
-        <h2>RATING</h2>
+        <Rating />
       </div>
       <section className="card__info">
         <div className="card__cover">

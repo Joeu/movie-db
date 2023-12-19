@@ -1,0 +1,5 @@
+main {
+  section:not(:last-child) {
+    border-bottom: 0.5px solid lightgray;
+  }
+}

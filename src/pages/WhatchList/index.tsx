@@ -1,12 +1,13 @@
 import React from "react";
 import Card from "../../components/Card";
+import List from "../../components/List";
+
+import dummy from "../../assets/dummydata.json";
 
 const WhatchList: React.FC = () => {
   return (
     <div>
-      {Array.from({ length: 10 }, (v, idx) => (
-        <Card />
-      ))}
+      <List data={dummy.movies} />
     </div>
   );
 };
