@@ -11,14 +11,17 @@ const ListItem = (props: ListItemProps) => {
   return (
     <section className="item">
       <div className="item__cover">
-        <img src={item.cover} alt="test" />
+        <img
+          src={`https://image.tmdb.org/t/p/w200${item.poster_path}`}
+          alt="test"
+        />
       </div>
       <aside className="item__info">
         <div>
           <span>{item.title}</span>
-          <span>8.3</span>
+          <span>{Math.round(item.vote_average * 10) / 10}</span>
         </div>
-        <article className="item__sinopsis">{item.sinopsis}</article>
+        <article className="item__sinopsis">{item.overview}</article>
       </aside>
     </section>
   );

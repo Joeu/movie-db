@@ -1,7 +1,8 @@
 export type Movie = {
   id: number;
   title: string;
-  sinopsis: string;
+  overview: string;
   year: number | string;
-  cover: string;
+  poster_path: string;
+  vote_average: number;
 };

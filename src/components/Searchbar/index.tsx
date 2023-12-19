@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { AiOutlineSearch } from "react-icons/ai";
+import { useNavigate } from "react-router-dom";
 
 const SearchBar = () => {
   const [inputValue, setInputValue] = useState("");
+  const navigate = useNavigate();
 
   const handleChange = (e: {
     target: { value: React.SetStateAction<string> };
@@ -11,8 +13,10 @@ const SearchBar = () => {
   };
 
   const handleSearch = (): void => {
-    console.log("run search with: " + inputValue);
-    setInputValue("");
+    if (inputValue) {
+      navigate(`/results?query=${inputValue}`);
+      setInputValue("");
+    }
   };
 
   return (
