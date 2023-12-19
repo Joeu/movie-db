@@ -5,8 +5,10 @@ import SearchBar from "../../components/Searchbar";
 const Header: React.FC = () => {
   return (
     <header>
-      <NavMenu></NavMenu>
-      <SearchBar></SearchBar>
+      <section>
+        <NavMenu></NavMenu>
+        <SearchBar></SearchBar>
+      </section>
     </header>
   );
 };
