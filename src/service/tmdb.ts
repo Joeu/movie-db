@@ -26,12 +26,25 @@ const getTrending = async () => {
   }
 };
 
-const getMovieDetails = async (movieId: string | null) => {
+const getMovieDetails = async (movieId: any) => {
   if (!movieId) return;
 
   try {
     const details = await axiosInstance.get(`${MOVIE_DETAILS_URL}/${movieId}`);
     return details.data;
+  } catch (error) {
+    throw error;
+  }
+};
+
+const getMovieCredits = async (movieId: any) => {
+  if (!movieId) return;
+
+  try {
+    const creditsResponse = await axiosInstance.get(
+      `${MOVIE_DETAILS_URL}/${movieId}/credits`
+    );
+    return creditsResponse.data;
   } catch (error) {
     throw error;
   }
@@ -64,7 +77,13 @@ const getProviders = async (movieId: any) => {
 };
 
 export const useGetMovieDetails = (movieId: any) => {
-  return useQuery(["data", movieId], () => getMovieDetails(movieId), {
+  return useQuery(["movie", movieId], () => getMovieDetails(movieId), {
+    cacheTime: 24 * (60 * 60000),
+  });
+};
+
+export const useGetMovieCredits = (movieId: any) => {
+  return useQuery(["movieCredits", movieId], () => getMovieCredits(movieId), {
     cacheTime: 24 * (60 * 60000),
   });
 };
