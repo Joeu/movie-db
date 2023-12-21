@@ -1,0 +1,46 @@
+.movie_details {
+  position: relative;
+
+  header {
+    background-size: cover;
+    background-position: center center;
+    width: 100%;
+    opacity: 0.5;
+    height: 40vh;
+  }
+
+  &__cover {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: calc(10vh);
+    left: 2rem;
+    width: 15.5rem;
+  }
+
+  &__title {
+    position: absolute;
+    top: 32vh;
+    right: 2rem;
+    font-weight: bold;
+    font-size: 3rem;
+  }
+
+  &__poster {
+    display: flex;
+
+    img {
+      object-fit: fill;
+      width: 250px;
+      height: auto;
+      border-top-left-radius: 1rem;
+      border-top-right-radius: 1rem;
+    }
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+}

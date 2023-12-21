@@ -12,13 +12,26 @@ axiosInstance.defaults.headers.common[
   "Authorization"
 ] = `Bearer ${process.env.REACT_APP_TMDB_ACCESS_TOKEN}`;
 
+const MOVIE_DETAILS_URL = `${process.env.REACT_APP_TMDB_BASE_URL}movie`;
 const TRENDING_URL = `${process.env.REACT_APP_TMDB_BASE_URL}trending/movie/week`;
 const SEARCH_URL = `${process.env.REACT_APP_TMDB_BASE_URL}search/movie`;
+const AVAILABLE_ON_URL = `${process.env.REACT_APP_TMDB_BASE_URL}movie`;
 
 const getTrending = async () => {
   try {
     const trendingResponse = await axiosInstance.get(TRENDING_URL);
     return trendingResponse.data;
+  } catch (error) {
+    throw error;
+  }
+};
+
+const getMovieDetails = async (movieId: string | null) => {
+  if (!movieId) return;
+
+  try {
+    const details = await axiosInstance.get(`${MOVIE_DETAILS_URL}/${movieId}`);
+    return details.data;
   } catch (error) {
     throw error;
   }
@@ -37,6 +50,29 @@ const searchMovie = async (query: any) => {
   } catch (error) {
     throw error;
   }
+};
+
+const getProviders = async (movieId: any) => {
+  try {
+    const availableResponse = await axiosInstance.get(
+      `${AVAILABLE_ON_URL}/${movieId}/watch/providers?watch_region=BR`
+    );
+    return availableResponse.data?.results?.BR;
+  } catch (error) {
+    throw error;
+  }
+};
+
+export const useGetMovieDetails = (movieId: any) => {
+  return useQuery(["data", movieId], () => getMovieDetails(movieId), {
+    cacheTime: 24 * (60 * 60000),
+  });
+};
+
+export const useGetProviders = (movieId: any) => {
+  return useQuery(["data", movieId], () => getProviders(movieId), {
+    cacheTime: 24 * (60 * 60000),
+  });
 };
 
 export const useGetTrending = () => {

@@ -12,7 +12,7 @@ const List = (props: ListProps) => {
   return (
     <main className="">
       {data.map((movie) => (
-        <ListItem item={movie} />
+        <ListItem key={movie.id} item={movie} />
       ))}
     </main>
   );

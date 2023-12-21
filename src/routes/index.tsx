@@ -4,6 +4,7 @@ import Home from "../pages/Home";
 import WhatchList from "../pages/WhatchList";
 import { QueryClient, QueryClientProvider } from "react-query";
 import Results from "../pages/Results";
+import DetailsPage from "../pages/Details";
 
 const queryClient = new QueryClient();
 
@@ -13,6 +14,8 @@ const AppRoutes: React.FC = () => (
       <Route path="/home" Component={Home} />
       <Route path="/whatchlist" Component={WhatchList} />
       <Route path="/results" Component={Results} />
+      <Route path="/movies/:movieId" Component={DetailsPage} />
+      <Route path="/*" Component={Home} />
     </Routes>
   </QueryClientProvider>
 );

@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 type CardProps = {
   item: any;
@@ -6,8 +7,14 @@ type CardProps = {
 
 const Card = (props: CardProps) => {
   const { item } = props;
+  const navigate = useNavigate();
+
+  const handleCardClick = () => {
+    navigate(`/movies/${item.id}`);
+  };
+
   return (
-    <section className="card">
+    <section className="card" onClick={handleCardClick}>
       <div className="card__title">
         <p>{item.title}</p>
       </div>
@@ -18,7 +25,7 @@ const Card = (props: CardProps) => {
             alt={`Poster for ${item.title}`}
           />
         </div>
-        <div>{item.vote_average}</div>
+        <div>{Math.round(item.vote_average * 10) / 10}</div>
       </div>
     </section>
   );

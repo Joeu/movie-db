@@ -1,0 +1,26 @@
+.available_on {
+  background-color: rgba($color: #757373f5, $alpha: 1);
+  display: flex;
+  flex-direction: column;
+  border-bottom-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  text-align: center;
+  padding: 1rem;
+  color: beige;
+
+  &__logos {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    padding-bottom: 0.5rem;
+
+    img {
+      height: 3rem;
+      width: 3rem;
+      margin-right: 0.5rem;
+      background-color: transparent;
+      border-radius: 0.8rem;
+    }
+  }
+}
