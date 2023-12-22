@@ -1,9 +1,9 @@
 import React from "react";
 
-import WatchTabs from "../../components/WatchTabs/WatchTabs";
+import Tabs from "../../components/Tabs/Tabs";
 
 const WatchList: React.FC = () => {
-  return <WatchTabs />;
+  return <Tabs />;
 };
 
 export default WatchList;

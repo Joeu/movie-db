@@ -1,0 +1,16 @@
+.tab-btn {
+  &--default {
+    background-color: transparent;
+    height: 3rem;
+    padding: 0.5rem 1rem;
+    border: 1px solid lightgray;
+  }
+
+  &--selected {
+    background-color: transparent;
+    height: 3rem;
+    padding: 0.5rem 1rem;
+    border: 1.1px solid lightcoral;
+    background-color: lightblue;
+  }
+}

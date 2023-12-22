@@ -1,0 +1,12 @@
+@import "./TabButton/TabButton.scss";
+
+.tab-container {
+  margin: 2rem auto;
+  &__tabs {
+    display: flex;
+    flex-direction: row;
+  }
+
+  &__content {
+  }
+}
