@@ -13,8 +13,13 @@ const Card = (props: CardProps) => {
   const dispatch = useDispatch();
 
   const handleCardClick = () => {
-    dispatch(addToWatchlist(item));
     navigate(`/movies/${item.id}`);
+  };
+
+  const handleBookmarkClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.stopPropagation();
+
+    dispatch(addToWatchlist(item));
   };
 
   return (
@@ -23,6 +28,7 @@ const Card = (props: CardProps) => {
         <p>{item.title}</p>
       </div>
       <div className="card__cover">
+        <button onClick={handleBookmarkClick}>Add</button>
         <div>
           <img
             src={`https://image.tmdb.org/t/p/w200${item.poster_path}`}

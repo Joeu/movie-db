@@ -29,4 +29,10 @@
       margin-bottom: 0.5rem;
     }
   }
+
+  &__actions {
+    svg {
+      cursor: pointer;
+    }
+  }
 }

@@ -1,5 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { Movie, Movies } from "../../types/types";
+import persistReducer from "redux-persist/es/persistReducer";
+import { watchedPersistConfig } from "./persistConfig";
 
 type WatchedState = {
   movies: Movies;
@@ -16,10 +18,18 @@ const watchedSlice = createSlice({
     addToWatched: (state, action: PayloadAction<Movie>) => {
       state.movies.push(action.payload);
     },
+    removeFromWatched: (state, action: PayloadAction<number>) => {
+      state.movies = state.movies.filter(
+        (movie: Movie) => movie.id !== action.payload
+      );
+    },
   },
 });
 
-export const { addToWatched } = watchedSlice.actions;
+export const { addToWatched, removeFromWatched } = watchedSlice.actions;
 export const getWatched = (state: { watched: Movies }) => state.watched;
 
-export default watchedSlice.reducer;
+export const watchedReducer = persistReducer(
+  watchedPersistConfig,
+  watchedSlice.reducer
+);

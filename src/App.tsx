@@ -4,18 +4,21 @@ import Header from "./layout/Header";
 import Main from "./layout/Main";
 import AppRoutes from "./routes";
 import { Provider } from "react-redux";
-import store from "./reducers/store";
+import { store, persistor } from "./reducers/store";
+import { PersistGate } from "redux-persist/integration/react";
 
 function App() {
   return (
     <Provider store={store}>
-      <BrowserRouter>
-        <Header />
-        <Main>
-          <AppRoutes />
-        </Main>
-        <Footer />
-      </BrowserRouter>
+      <PersistGate loading={null} persistor={persistor}>
+        <BrowserRouter>
+          <Header />
+          <Main>
+            <AppRoutes />
+          </Main>
+          <Footer />
+        </BrowserRouter>
+      </PersistGate>
     </Provider>
   );
 }
