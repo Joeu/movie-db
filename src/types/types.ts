@@ -7,6 +7,8 @@ export type Movie = {
   vote_average: number;
 };
 
+export type Movies = Array<Movie>;
+
 export type ImageSize =
   | "w92"
   | "w154"

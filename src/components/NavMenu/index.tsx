@@ -7,7 +7,7 @@ const NavMenu: React.FC = () => {
 
   return (
     <nav>
-      {["Home", "WhatchList"].map((item, idx) => (
+      {["Home", "WatchList"].map((item, idx) => (
         <Link
           key={idx}
           to={item.toLowerCase()}

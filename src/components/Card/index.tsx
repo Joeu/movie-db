@@ -1,5 +1,7 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { addToWatchlist } from "../../reducers/slices/watchlist";
 
 type CardProps = {
   item: any;
@@ -8,8 +10,10 @@ type CardProps = {
 const Card = (props: CardProps) => {
   const { item } = props;
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const handleCardClick = () => {
+    dispatch(addToWatchlist(item));
     navigate(`/movies/${item.id}`);
   };
 

@@ -19,8 +19,6 @@ const Cast: React.FC<CastProps> = ({ movieId }) => {
     return <p>Error Retrieving data</p>;
   }
 
-  console.log(data?.cast);
-
   return (
     <section className="cast">
       <h3>Starring</h3>

@@ -1,9 +1,9 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { Movie } from "../../types/types";
+import { Movie, Movies } from "../../types/types";
 
-interface WatchedState {
-  movies: Movie[];
-}
+type WatchedState = {
+  movies: Movies;
+};
 
 const initialState: WatchedState = {
   movies: [],
@@ -20,5 +20,6 @@ const watchedSlice = createSlice({
 });
 
 export const { addToWatched } = watchedSlice.actions;
+export const getWatched = (state: { watched: Movies }) => state.watched;
 
 export default watchedSlice.reducer;

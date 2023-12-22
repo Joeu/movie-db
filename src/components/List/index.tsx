@@ -1,9 +1,8 @@
 import React from "react";
 import ListItem from "../ListItem";
-import { Movie } from "../../types/types";
 
 type ListProps = {
-  data: Movie[];
+  data: any;
 };
 
 const List = (props: ListProps) => {
@@ -11,7 +10,7 @@ const List = (props: ListProps) => {
 
   return (
     <main className="">
-      {data.map((movie) => (
+      {data?.movies?.map((movie: any) => (
         <ListItem key={movie.id} item={movie} />
       ))}
     </main>

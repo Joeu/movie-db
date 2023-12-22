@@ -20,6 +20,7 @@ const AvailableOn: React.FC<AvailableOnProps> = ({ movieId }) => {
       <div className="available_on__logos">
         {data?.rent?.map((provider: any, idx: number) => (
           <img
+            key={idx}
             alt={provider.provider_name}
             src={`https://image.tmdb.org/t/p/w92${provider.logo_path}`}
           />
