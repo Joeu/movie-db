@@ -4,6 +4,7 @@
     height: 3rem;
     padding: 0.5rem 1rem;
     border: 1px solid lightgray;
+    cursor: pointer;
   }
 
   &--selected {
@@ -12,5 +13,6 @@
     padding: 0.5rem 1rem;
     border: 1.1px solid lightcoral;
     background-color: lightblue;
+    cursor: pointer;
   }
 }

@@ -21,3 +21,17 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.app {
+  transition: background-color 0.3s ease;
+
+  &.light {
+    background-color: #ffffff;
+    color: #333333;
+  }
+
+  &.dark {
+    background-color: #333333;
+    color: #ffffff;
+  }
+}

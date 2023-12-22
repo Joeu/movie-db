@@ -6,13 +6,15 @@ import AppRoutes from "./routes";
 import { Provider } from "react-redux";
 import { store, persistor } from "./reducers/store";
 import { PersistGate } from "redux-persist/integration/react";
-import { PreferencesProvider } from "./contexts/PreferencesContext";
+import { usePreferences } from "./hooks/usePreferences";
 
 function App() {
+  const { theme } = usePreferences();
+
   return (
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
-        <PreferencesProvider>
+        <div className={`app ${theme}`}>
           <BrowserRouter>
             <Header />
             <Main>
@@ -20,7 +22,7 @@ function App() {
             </Main>
             <Footer />
           </BrowserRouter>
-        </PreferencesProvider>
+        </div>
       </PersistGate>
     </Provider>
   );

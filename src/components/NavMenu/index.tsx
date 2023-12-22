@@ -24,7 +24,7 @@ const NavMenu: React.FC = () => {
           {item}
         </Link>
       ))}
-      <button onClick={handleToggleTheme}>Current Theme: {ctx.theme}</button>
+      <button onClick={handleToggleTheme}>Change Theme</button>
     </nav>
   );
 };
