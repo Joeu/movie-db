@@ -3,6 +3,9 @@ import ReactDOM from "react-dom/client";
 import "./sass/app.scss";
 import App from "./App";
 import { PreferencesProvider } from "./contexts/PreferencesContext";
+import { Provider } from "react-redux";
+import { store, persistor } from "./reducers/store";
+import { PersistGate } from "redux-persist/integration/react";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -10,8 +13,12 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <React.StrictMode>
-    <PreferencesProvider>
-      <App />
-    </PreferencesProvider>
+    <PersistGate loading={null} persistor={persistor}>
+      <Provider store={store}>
+        <PreferencesProvider>
+          <App />
+        </PreferencesProvider>
+      </Provider>
+    </PersistGate>
   </React.StrictMode>
 );
