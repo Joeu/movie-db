@@ -9,9 +9,9 @@ const List = (props: ListProps) => {
   const { data } = props;
 
   return (
-    <main className="">
-      {data?.movies?.map((movie: any) => (
-        <ListItem key={movie.id} item={movie} />
+    <main className="list-container">
+      {data?.movies?.map((movie: any, idx: number) => (
+        <ListItem key={movie.id} item={movie} odd={(idx + 1) % 2 !== 0} />
       ))}
     </main>
   );

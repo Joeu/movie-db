@@ -2,14 +2,12 @@ import React from "react";
 import { Movie } from "../../types/types";
 import { MdMovieFilter, MdBookmarkAdd, MdBookmarkRemove } from "react-icons/md";
 import { useDispatch } from "react-redux";
-import {
-  addToWatchlist,
-  removeFromWatchlist,
-} from "../../reducers/slices/watchlist";
+import { removeFromWatchlist } from "../../reducers/slices/watchlist";
 import { addToWatched } from "../../reducers/slices/watched";
 
 type ListItemProps = {
   item: Movie;
+  odd?: boolean;
 };
 
 const ListItem = (props: ListItemProps) => {
@@ -26,7 +24,7 @@ const ListItem = (props: ListItemProps) => {
   };
 
   return (
-    <section className="item">
+    <section className={`item ${props.odd ? "odd" : ""}`}>
       <div className="item__cover">
         <img
           src={`https://image.tmdb.org/t/p/w200${item.poster_path}`}
