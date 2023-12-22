@@ -1,13 +1,13 @@
 import React from "react";
 import { ImageSize } from "../../types/types";
 
-type MovieCoverProps = {
+type TmdbImageProps = {
   alt: string;
   path: string;
   size: ImageSize;
 };
 
-const MovieCover: React.FC<MovieCoverProps> = ({ alt, path, size }) => {
+const TmdbImage: React.FC<TmdbImageProps> = ({ alt, path, size }) => {
   return (
     <img
       src={`https://image.tmdb.org/t/p/${size}${path}`}
@@ -16,4 +16,4 @@ const MovieCover: React.FC<MovieCoverProps> = ({ alt, path, size }) => {
   );
 };
 
-export default MovieCover;
+export default TmdbImage;

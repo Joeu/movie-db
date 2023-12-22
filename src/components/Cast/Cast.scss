@@ -1,0 +1,11 @@
+.cast {
+  &__stars {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  &__card {
+    width: 10rem;
+  }
+}

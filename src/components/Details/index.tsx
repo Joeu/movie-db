@@ -1,7 +1,7 @@
 import React from "react";
 import { useGetMovieDetails } from "../../service/tmdb";
 import { useParams } from "react-router-dom";
-import MovieCover from "../../components/Cover";
+import TmdbImage from "../../components/Cover";
 import AvailableOn from "../AvailableOn";
 import Cast from "../Cast/Cast";
 
@@ -26,7 +26,7 @@ const MovieDetails = () => {
 
       <div className="movie_details__cover">
         <div className="movie_details__poster">
-          <MovieCover
+          <TmdbImage
             alt={movieDetails.title}
             path={movieDetails.poster_path}
             size="w200"
@@ -38,23 +38,23 @@ const MovieDetails = () => {
       <div className="movie_details__title">{movieDetails.title}</div>
 
       <div className="movie_details__info">
-        <a href={movieDetails.homepage}>Official website</a>
-        <div>{movieDetails.released}</div>
-        <div>{movieDetails.release_date}</div>
-        <div>{movieDetails.vote_average}</div>
-        <div>
-          {movieDetails.genres?.map((genre: any, idx: number) => (
-            <div key={idx}>
-              <span>{genre.name}</span>
-            </div>
-          ))}
+        <div className="movie_details__rate">
+          <div className="movie_details__genre">
+            {movieDetails.genres?.map((genre: any, idx: number) => (
+              <span className="movie_details__chip" key={idx}>
+                {genre.name}
+              </span>
+            ))}
+          </div>
+          <div>Release date: {movieDetails.release_date}</div>
+          <div>{movieDetails.vote_average}</div>
+          <div>{movieDetails.revenue}</div>
         </div>
+        <a href={movieDetails.homepage}>Official website</a>
         <div>{movieDetails.overview}</div>
       </div>
 
-      <div className="movie_details__cast">
-        <Cast movieId={movieId} />
-      </div>
+      <Cast movieId={movieId} />
     </section>
   );
 };
