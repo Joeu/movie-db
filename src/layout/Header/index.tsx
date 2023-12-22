@@ -6,8 +6,8 @@ const Header: React.FC = () => {
   return (
     <header>
       <section>
-        <NavMenu></NavMenu>
-        <SearchBar></SearchBar>
+        <NavMenu />
+        <SearchBar />
       </section>
     </header>
   );

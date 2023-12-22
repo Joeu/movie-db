@@ -17,3 +17,5 @@ export type ImageSize =
   | "w500"
   | "w780"
   | "original";
+
+export type Themes = "light" | "dark";
