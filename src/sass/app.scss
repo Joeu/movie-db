@@ -1,5 +1,5 @@
-@use "./themes/dark.scss" as dark;
-@use "./themes/light.scss" as light;
+@use "./themes/dark.scss" as *;
+@use "./themes/light.scss" as *;
 
 @import "../layout/layout.scss";
 @import "../components/components.scss";
@@ -20,6 +20,10 @@ body {
   main {
     margin: 0 auto;
     width: 1200px;
+  }
+
+  button {
+    color: var(--color);
   }
 }
 
