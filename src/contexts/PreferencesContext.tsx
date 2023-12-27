@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 
 export const PreferencesContext = createContext({});
 
@@ -8,6 +8,13 @@ export const PreferencesProvider = (props: any) => {
   const toggleTheme = () => {
     setCurrentTheme((prev) => (prev === "dark" ? "light" : "dark"));
   };
+
+  useEffect(() => {
+    document.documentElement.setAttribute(
+      "data-theme",
+      currentTheme === "dark" ? "light" : "dark"
+    );
+  }, [currentTheme]);
 
   return (
     <PreferencesContext.Provider value={{ theme: currentTheme, toggleTheme }}>
