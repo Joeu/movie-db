@@ -16,7 +16,9 @@ const watchedSlice = createSlice({
   initialState,
   reducers: {
     addToWatched: (state, action: PayloadAction<Movie>) => {
-      state.movies.push(action.payload);
+      if (!state.movies.some((item) => item.id === action.payload.id)) {
+        state.movies.push(action.payload);
+      }
     },
     removeFromWatched: (state, action: PayloadAction<number>) => {
       state.movies = state.movies.filter(
