@@ -16,7 +16,7 @@
 
   &:hover {
     cursor: pointer;
-    transform: scale(1.05); // TODO: change this effect
+    box-shadow: 0 0 20px var(--glow-color);
     transition: all 0.2s;
   }
 
