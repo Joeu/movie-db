@@ -5,7 +5,7 @@ type MainProps = {
 };
 
 const Main = (props: MainProps) => {
-  return <main>{props.children}</main>;
+  return <main id="main-content">{props.children}</main>;
 };
 
 export default Main;

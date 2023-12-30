@@ -2,6 +2,7 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { addToWatchlist } from "../../reducers/slices/watchlist";
+import useSnackbar from "../../hooks/useSnackbar";
 
 type CardProps = {
   item: any;
@@ -11,6 +12,7 @@ const Card = (props: CardProps) => {
   const { item } = props;
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const { showSnackbar, snackbar } = useSnackbar();
 
   const handleCardClick = () => {
     navigate(`/movies/${item.id}`);
@@ -18,8 +20,8 @@ const Card = (props: CardProps) => {
 
   const handleBookmarkClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
-
     dispatch(addToWatchlist(item));
+    showSnackbar("info", "Movie added");
   };
 
   return (
@@ -37,6 +39,7 @@ const Card = (props: CardProps) => {
         </div>
         <div>{Math.round(item.vote_average * 10) / 10}</div>
       </div>
+      {snackbar}
     </section>
   );
 };
