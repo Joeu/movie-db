@@ -5,6 +5,10 @@ import { watchlistPersistConfig } from "./persistConfig";
 
 type WatchlistState = {
   movies: Movies;
+  notification?: {
+    message?: string | null;
+    type?: "success" | "error";
+  };
 };
 
 const initialState: WatchlistState = {
@@ -17,7 +21,16 @@ const watchlistSlice = createSlice({
   reducers: {
     addToWatchlist: (state, action: PayloadAction<Movie>) => {
       if (!state.movies.some((item) => item.id === action.payload.id)) {
+        state.notification = {
+          message: `${action.payload.title} added to watched list`,
+          type: "success",
+        };
         state.movies.push(action.payload);
+      } else {
+        state.notification = {
+          message: `${action.payload.title} already added to watched list`,
+          type: "error",
+        };
       }
     },
     removeFromWatchlist: (state, action: PayloadAction<number>) => {

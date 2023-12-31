@@ -3,14 +3,17 @@ import Footer from "./layout/Footer";
 import Header from "./layout/Header";
 import Main from "./layout/Main";
 import AppRoutes from "./routes";
+import { NotificationsProvider } from "./contexts/NotificationsContext";
 
 function App() {
   return (
     <BrowserRouter>
       <Header />
-      <Main>
-        <AppRoutes />
-      </Main>
+      <NotificationsProvider>
+        <Main>
+          <AppRoutes />
+        </Main>
+      </NotificationsProvider>
       <Footer />
     </BrowserRouter>
   );

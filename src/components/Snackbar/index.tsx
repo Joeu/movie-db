@@ -1,33 +1,55 @@
-import React, { useEffect, useState } from "react";
-import ReactDOM from "react-dom";
+import React, {
+  forwardRef,
+  useEffect,
+  useImperativeHandle,
+  useState,
+} from "react";
+import { MdCheckCircle, MdError } from "react-icons/md";
 
 type SnackbarProps = {
-  message: string;
-  type: "error" | "info";
-  onClose: (e: any) => void;
+  content: any;
 };
 
-const Snackbar: React.FC<SnackbarProps> = ({ message, type, onClose }) => {
-  const [visible, setVisible] = useState<boolean>(true);
+export type SnackbarMethods = {
+  show: () => void;
+  hide: () => void;
+};
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setVisible(false);
-    }, 3000);
-    return () => clearTimeout(timer);
-  }, [onClose]);
+const Snackbar: React.ForwardRefRenderFunction<
+  SnackbarMethods,
+  SnackbarProps
+> = ({ content }, ref): JSX.Element => {
+  const [isVisible, setIsVisible] = useState(false);
+  const { message, type } = content;
 
-  return ReactDOM.createPortal(
+  // useEffect(() => {
+  //   const timeout = setTimeout(() => {
+  //     setIsVisible(false);
+  //   }, 3000);
+
+  //   return () => clearTimeout(timeout);
+  // });
+
+  useImperativeHandle(ref, () => ({
+    show: () => setIsVisible(true),
+    hide: () => setIsVisible(false),
+  }));
+  return (
     <>
-      {visible && (
-        <div className="snackbar">
-          <span>{message}</span>
-          <button onClick={onClose}>Close</button>
+      {isVisible && (
+        <div className={`snackbar ${type}`}>
+          <>
+            <div className="message">
+              {type === "success" && <MdCheckCircle size={36} />}
+              {type === "error" && <MdError size={36} />}
+              <span>{message}</span>
+            </div>
+            <button onClick={() => setIsVisible(false)}>X</button>
+          </>
         </div>
       )}
-    </>,
-    document.getElementById("main-content")!
+    </>
   );
 };
 
-export default Snackbar;
+export default forwardRef(Snackbar);

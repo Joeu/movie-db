@@ -5,6 +5,10 @@ import { watchedPersistConfig } from "./persistConfig";
 
 type WatchedState = {
   movies: Movies;
+  notification?: {
+    message?: string | null;
+    type?: "success" | "error";
+  };
 };
 
 const initialState: WatchedState = {
@@ -17,7 +21,16 @@ const watchedSlice = createSlice({
   reducers: {
     addToWatched: (state, action: PayloadAction<Movie>) => {
       if (!state.movies.some((item) => item.id === action.payload.id)) {
+        state.notification = {
+          message: `${action.payload.title} added to watched list`,
+          type: "success",
+        };
         state.movies.push(action.payload);
+      } else {
+        state.notification = {
+          message: `${action.payload.title} already added to watched list`,
+          type: "error",
+        };
       }
     },
     removeFromWatched: (state, action: PayloadAction<number>) => {
