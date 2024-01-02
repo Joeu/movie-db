@@ -12,11 +12,7 @@ const Home: React.FC = () => {
     return <p>Error Retrieving data</p>;
   }
 
-  return (
-    <div>
-      <Grid data={data.results} />
-    </div>
-  );
+  return <div>{data && <Grid data={data.results} />}</div>;
 };
 
 export default Home;

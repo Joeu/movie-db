@@ -1,13 +1,8 @@
-export type Movie = {
-  id: number;
-  title: string;
-  overview: string;
-  year: number | string;
-  poster_path: string;
-  vote_average: number;
-};
+import { MovieBase } from "./apiTypes";
 
-export type Movies = Array<Movie>;
+export type MovieId = string | number;
+
+export type Movies = Array<MovieBase>;
 
 export type ImageSize =
   | "w92"
@@ -17,5 +12,3 @@ export type ImageSize =
   | "w500"
   | "w780"
   | "original";
-
-export type Themes = "light" | "dark";

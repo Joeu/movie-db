@@ -4,11 +4,12 @@ import { useParams } from "react-router-dom";
 import TmdbImage from "../../components/Cover";
 import AvailableOn from "../AvailableOn";
 import Cast from "../Cast/Cast";
+import { MovieDetailsParams } from "../../types/routeTypes";
 
 const MovieDetails = () => {
-  const { movieId } = useParams();
+  const { movieId } = useParams<MovieDetailsParams>();
 
-  const { data: movieDetails } = useGetMovieDetails(movieId);
+  const { data: movieDetails } = useGetMovieDetails(movieId ?? "");
 
   if (!movieDetails) {
     return <div>Loading...</div>;
@@ -54,7 +55,7 @@ const MovieDetails = () => {
         <div>{movieDetails.overview}</div>
       </div>
 
-      <Cast movieId={movieId} />
+      <Cast movieId={movieDetails.id} />
     </section>
   );
 };

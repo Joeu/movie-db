@@ -1,12 +1,12 @@
 import React from "react";
-import { Movie } from "../../types/appTypes";
 import { MdMovieFilter, MdBookmarkAdd, MdBookmarkRemove } from "react-icons/md";
 import { useDispatch } from "react-redux";
 import { removeFromWatchlist } from "../../reducers/slices/watchlist";
 import { addToWatched } from "../../reducers/slices/watched";
+import { MovieBase } from "../../types";
 
 type ListItemProps = {
-  item: Movie;
+  item: MovieBase;
   odd?: boolean;
 };
 

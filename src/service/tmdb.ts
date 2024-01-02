@@ -1,5 +1,11 @@
 import axios from "axios";
 import { useQuery } from "react-query";
+import {
+  CreditsResponse,
+  MovieDetailsResponse,
+  MovieId,
+  TrendingMoviesResponde,
+} from "../types";
 
 const axiosInstance = axios.create({
   baseURL: process.env.REACT_APP_TMDB_BASE_URL,
@@ -17,7 +23,7 @@ const TRENDING_URL = `${process.env.REACT_APP_TMDB_BASE_URL}trending/movie/week`
 const SEARCH_URL = `${process.env.REACT_APP_TMDB_BASE_URL}search/movie`;
 const AVAILABLE_ON_URL = `${process.env.REACT_APP_TMDB_BASE_URL}movie`;
 
-const getTrending = async () => {
+const getTrending = async (): Promise<TrendingMoviesResponde> => {
   try {
     const trendingResponse = await axiosInstance.get(TRENDING_URL);
     return trendingResponse.data;
@@ -26,9 +32,9 @@ const getTrending = async () => {
   }
 };
 
-const getMovieDetails = async (movieId: any) => {
-  if (!movieId) return;
-
+const getMovieDetails = async (
+  movieId: MovieId
+): Promise<MovieDetailsResponse> => {
   try {
     const details = await axiosInstance.get(`${MOVIE_DETAILS_URL}/${movieId}`);
     return details.data;
@@ -37,9 +43,7 @@ const getMovieDetails = async (movieId: any) => {
   }
 };
 
-const getMovieCredits = async (movieId: any) => {
-  if (!movieId) return;
-
+const getMovieCredits = async (movieId: MovieId): Promise<CreditsResponse> => {
   try {
     const creditsResponse = await axiosInstance.get(
       `${MOVIE_DETAILS_URL}/${movieId}/credits`
@@ -65,7 +69,7 @@ const searchMovie = async (query: any) => {
   }
 };
 
-const getProviders = async (movieId: any) => {
+const getProviders = async (movieId: MovieId) => {
   try {
     const availableResponse = await axiosInstance.get(
       `${AVAILABLE_ON_URL}/${movieId}/watch/providers?watch_region=BR`
@@ -76,19 +80,19 @@ const getProviders = async (movieId: any) => {
   }
 };
 
-export const useGetMovieDetails = (movieId: any) => {
+export const useGetMovieDetails = (movieId: MovieId) => {
   return useQuery(["movie", movieId], () => getMovieDetails(movieId), {
     cacheTime: 24 * (60 * 60000),
   });
 };
 
-export const useGetMovieCredits = (movieId: any) => {
+export const useGetMovieCredits = (movieId: MovieId) => {
   return useQuery(["movieCredits", movieId], () => getMovieCredits(movieId), {
     cacheTime: 24 * (60 * 60000),
   });
 };
 
-export const useGetProviders = (movieId: any) => {
+export const useGetProviders = (movieId: MovieId) => {
   return useQuery(["data", movieId], () => getProviders(movieId), {
     cacheTime: 24 * (60 * 60000),
   });

@@ -1,10 +1,11 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { Movie, Movies } from "../../types/appTypes";
+import { MovieId, Movies } from "../../types/appTypes";
 import persistReducer from "redux-persist/es/persistReducer";
 import { watchlistPersistConfig } from "./persistConfig";
+import { MovieBase } from "../../types";
 
 type WatchlistState = {
-  movies: Movies;
+  movies: MovieBase[];
   notification?: {
     message?: string | null;
     type?: "success" | "error";
@@ -19,7 +20,7 @@ const watchlistSlice = createSlice({
   name: "watchlist",
   initialState,
   reducers: {
-    addToWatchlist: (state, action: PayloadAction<Movie>) => {
+    addToWatchlist: (state, action: PayloadAction<MovieBase>) => {
       if (!state.movies.some((item) => item.id === action.payload.id)) {
         state.notification = {
           message: `${action.payload.title} added to watched list`,
@@ -33,9 +34,9 @@ const watchlistSlice = createSlice({
         };
       }
     },
-    removeFromWatchlist: (state, action: PayloadAction<number>) => {
+    removeFromWatchlist: (state, action: PayloadAction<MovieId>) => {
       state.movies = state.movies.filter(
-        (movie: Movie) => movie.id !== action.payload
+        (movie: MovieBase) => movie.id !== action.payload
       );
     },
   },

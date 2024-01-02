@@ -2,7 +2,7 @@ import React from "react";
 import { useGetProviders } from "../../service/tmdb";
 
 type AvailableOnProps = {
-  movieId: string;
+  movieId: number | string;
 };
 
 const AvailableOn: React.FC<AvailableOnProps> = ({ movieId }) => {

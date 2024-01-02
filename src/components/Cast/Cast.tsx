@@ -1,9 +1,10 @@
 import React from "react";
 import { useGetMovieCredits } from "../../service/tmdb";
 import TmdbImage from "../Cover";
+import { MovieId } from "../../types";
 
 type CastProps = {
-  movieId?: string;
+  movieId: MovieId;
 };
 
 const Cast: React.FC<CastProps> = ({ movieId }) => {
