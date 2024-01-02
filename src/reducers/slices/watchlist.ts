@@ -1,15 +1,12 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { MovieId, Movies } from "../../types/appTypes";
+import { MovieId, Movies, Notification } from "../../types/appTypes";
 import persistReducer from "redux-persist/es/persistReducer";
 import { watchlistPersistConfig } from "./persistConfig";
 import { MovieBase } from "../../types";
 
 type WatchlistState = {
   movies: MovieBase[];
-  notification?: {
-    message?: string | null;
-    type?: "success" | "error";
-  };
+  notification?: Notification;
 };
 
 const initialState: WatchlistState = {
