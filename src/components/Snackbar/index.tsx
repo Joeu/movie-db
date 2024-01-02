@@ -4,7 +4,7 @@ import React, {
   useImperativeHandle,
   useState,
 } from "react";
-import { MdCheckCircle, MdError } from "react-icons/md";
+import { MdCheckCircle, MdClose, MdError } from "react-icons/md";
 
 type SnackbarProps = {
   content: any;
@@ -20,7 +20,6 @@ const Snackbar: React.ForwardRefRenderFunction<
   SnackbarProps
 > = ({ content }, ref): JSX.Element => {
   const [isVisible, setIsVisible] = useState(false);
-  const { message, type } = content;
 
   // useEffect(() => {
   //   const timeout = setTimeout(() => {
@@ -37,14 +36,20 @@ const Snackbar: React.ForwardRefRenderFunction<
   return (
     <>
       {isVisible && (
-        <div className={`snackbar ${type}`}>
+        <div
+          className={`snackbar ${isVisible ? "visible" : ""} ${content?.type} `}
+        >
           <>
             <div className="message">
-              {type === "success" && <MdCheckCircle size={36} />}
-              {type === "error" && <MdError size={36} />}
-              <span>{message}</span>
+              {content?.type === "success" && <MdCheckCircle size={36} />}
+              {content?.type === "error" && <MdError size={36} />}
+              <span>{content?.message}</span>
             </div>
-            <button onClick={() => setIsVisible(false)}>X</button>
+            <MdClose
+              className="snackbar__close-btn"
+              size={20}
+              onClick={() => setIsVisible(false)}
+            />
           </>
         </div>
       )}

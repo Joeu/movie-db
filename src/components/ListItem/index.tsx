@@ -1,5 +1,5 @@
 import React from "react";
-import { Movie } from "../../types/types";
+import { Movie } from "../../types/appTypes";
 import { MdMovieFilter, MdBookmarkAdd, MdBookmarkRemove } from "react-icons/md";
 import { useDispatch } from "react-redux";
 import { removeFromWatchlist } from "../../reducers/slices/watchlist";

@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { Movie, Movies } from "../../types/types";
+import { Movie, Movies } from "../../types/appTypes";
 import persistReducer from "redux-persist/es/persistReducer";
 import { watchlistPersistConfig } from "./persistConfig";
 

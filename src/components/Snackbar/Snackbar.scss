@@ -11,6 +11,22 @@
   align-items: center;
   justify-content: space-between;
   color: #{$white-2};
+
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s, visibility 0.3s;
+
+  &__close-btn {
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &.visible {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.3s, visibility 0.3s;
+  }
 }
 
 .message {
@@ -26,7 +42,7 @@
 }
 
 .error {
-  background-color: lightgray;
+  background-color: rgb(117, 117, 117);
 }
 
 .success {

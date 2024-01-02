@@ -1,5 +1,5 @@
 import React from "react";
-import { ImageSize } from "../../types/types";
+import { ImageSize } from "../../types/appTypes";
 
 type TmdbImageProps = {
   alt: string;
