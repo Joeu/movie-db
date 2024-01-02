@@ -30,13 +30,13 @@ const Tabs = () => {
         className="tab-container__content"
         style={{ display: selected === "watchlist" ? "block" : "none" }}
       >
-        <List data={watchlist} />
+        <List data={watchlist.movies} />
       </div>
       <div
         className="tab-container__content"
         style={{ display: selected === "watched" ? "block" : "none" }}
       >
-        <List data={watched} />
+        <List data={watched.movies} />
       </div>
     </div>
   );

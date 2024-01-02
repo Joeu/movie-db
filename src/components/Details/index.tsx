@@ -5,6 +5,7 @@ import TmdbImage from "../../components/Cover";
 import AvailableOn from "../AvailableOn";
 import Cast from "../Cast/Cast";
 import { MovieDetailsParams } from "../../types/routeTypes";
+import Loading from "../Loading";
 
 const MovieDetails = () => {
   const { movieId } = useParams<MovieDetailsParams>();
@@ -12,7 +13,7 @@ const MovieDetails = () => {
   const { data: movieDetails } = useGetMovieDetails(movieId ?? "");
 
   if (!movieDetails) {
-    return <div>Loading...</div>;
+    return <Loading />;
   }
 
   const bgImageUrl = `url(https://image.tmdb.org/t/p/w780${movieDetails?.backdrop_path})`;

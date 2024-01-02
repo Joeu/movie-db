@@ -2,6 +2,7 @@ import React from "react";
 import { useSearch } from "../../service/tmdb";
 import { useSearchParams } from "react-router-dom";
 import List from "../../components/List";
+import Loading from "../../components/Loading";
 
 const Results: React.FC = () => {
   const [searchParams] = useSearchParams();
@@ -9,7 +10,7 @@ const Results: React.FC = () => {
   const { data, isLoading, isError } = useSearch(query);
 
   if (isLoading) {
-    return <p>Loading...</p>;
+    return <Loading />;
   }
   if (isError) {
     return <p>Error Retrieving data</p>;
@@ -17,8 +18,12 @@ const Results: React.FC = () => {
 
   return (
     <div>
-      <h1>Search results:</h1>
-      <List data={data?.results} />
+      {data && (
+        <>
+          <h1>Search results:</h1>
+          <List data={data.results} />
+        </>
+      )}
     </div>
   );
 };

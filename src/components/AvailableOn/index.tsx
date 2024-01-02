@@ -17,17 +17,23 @@ const AvailableOn: React.FC<AvailableOnProps> = ({ movieId }) => {
 
   return (
     <div className="available_on">
-      <div className="available_on__logos">
-        {data?.rent?.map((provider: any, idx: number) => (
-          <img
-            key={idx}
-            alt={provider.provider_name}
-            src={`https://image.tmdb.org/t/p/w92${provider.logo_path}`}
-          />
-        ))}
-      </div>
+      {data.rent ? (
+        <>
+          <div className="available_on__logos">
+            {data.rent?.map((provider: any, idx: number) => (
+              <img
+                key={idx}
+                alt={provider.provider_name}
+                src={`https://image.tmdb.org/t/p/w92${provider.logo_path}`}
+              />
+            ))}
+          </div>
 
-      <div>Powered By JustWatch</div>
+          <div>Powered By JustWatch</div>
+        </>
+      ) : (
+        <>Not available for streaming yet</>
+      )}
     </div>
   );
 };

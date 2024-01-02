@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useQuery } from "react-query";
 import {
+  Country,
   CreditsResponse,
   MovieDetailsResponse,
   MovieId,
@@ -72,9 +73,9 @@ const searchMovie = async (query: any) => {
 const getProviders = async (movieId: MovieId) => {
   try {
     const availableResponse = await axiosInstance.get(
-      `${AVAILABLE_ON_URL}/${movieId}/watch/providers?watch_region=BR`
+      `${AVAILABLE_ON_URL}/${movieId}/watch/providers?watch_region=${Country.PT}`
     );
-    return availableResponse.data?.results?.BR;
+    return availableResponse.data?.results?.PT;
   } catch (error) {
     throw error;
   }

@@ -1,16 +1,15 @@
 import React from "react";
 import ListItem from "../ListItem";
+import { MovieBase } from "../../types";
 
 type ListProps = {
-  data: any;
+  data: MovieBase[];
 };
 
-const List = (props: ListProps) => {
-  const { data } = props;
-
+const List: React.FC<ListProps> = ({ data }) => {
   return (
     <main className="list-container">
-      {data?.movies?.map((movie: any, idx: number) => (
+      {data?.map((movie: any, idx: number) => (
         <ListItem key={movie.id} item={movie} odd={(idx + 1) % 2 !== 0} />
       ))}
     </main>
