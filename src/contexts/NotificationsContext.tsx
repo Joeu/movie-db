@@ -1,26 +1,29 @@
-import { createContext, useState, useRef } from "react";
+import { createContext, useState, useRef, ReactNode } from "react";
 import Snackbar, { SnackbarMethods } from "../components/Snackbar";
 
 export const NotificationsContext = createContext({});
 
-export const NotificationsProvider = (props: any) => {
-  const [content, setContent] = useState(null);
+export const NotificationsProvider: React.FC<{ children: ReactNode }> = ({
+  children,
+}) => {
+  const [content, setContent] = useState<string | null>(null);
   const snackbarRef = useRef<SnackbarMethods>(null);
 
-  const showNotification = (content: any) => {
+  const showNotification = (content: string | null) => {
     setContent(content);
     snackbarRef.current?.show();
   };
 
   const value = {
     content,
+    setContent,
     showNotification,
   };
 
   return (
     <NotificationsContext.Provider value={value}>
-      {props.children}
-      <Snackbar ref={snackbarRef} content={content} />
+      {children}
+      <Snackbar ref={snackbarRef} content={content} setContent={setContent} />
     </NotificationsContext.Provider>
   );
 };

@@ -39,6 +39,16 @@
     }
   }
 
+  &__actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    svg {
+      cursor: pointer;
+    }
+  }
+
   &__info {
     display: flex;
     margin-left: 30%;

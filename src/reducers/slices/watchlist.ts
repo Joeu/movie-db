@@ -6,7 +6,7 @@ import { MovieBase } from "../../types";
 
 type WatchlistState = {
   movies: MovieBase[];
-  notification?: Notification;
+  notification?: Notification | null;
 };
 
 const initialState: WatchlistState = {
@@ -36,10 +36,14 @@ const watchlistSlice = createSlice({
         (movie: MovieBase) => movie.id !== action.payload
       );
     },
+    clearNotifications: (state) => {
+      state.notification = null;
+    },
   },
 });
 
-export const { addToWatchlist, removeFromWatchlist } = watchlistSlice.actions;
+export const { addToWatchlist, removeFromWatchlist, clearNotifications } =
+  watchlistSlice.actions;
 export const getWatchlist = (state: { watchlist: Movies }) => state.watchlist;
 
 export const whatchlistReducer = persistReducer(

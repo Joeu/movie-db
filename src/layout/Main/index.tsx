@@ -9,13 +9,14 @@ type MainProps = {
 
 const Main = (props: MainProps) => {
   const { showNotification } = useSnackbar();
-  const watclistNotification = useSelector(
+
+  const watchlistNotification = useSelector(
     (state: RootState) => state.watchlist.notification
   );
 
   useEffect(() => {
-    showNotification(watclistNotification);
-  }, [showNotification, watclistNotification]);
+    showNotification(watchlistNotification);
+  }, [showNotification, watchlistNotification]);
 
   return <main id="main-content">{props.children}</main>;
 };

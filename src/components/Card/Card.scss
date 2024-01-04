@@ -55,4 +55,15 @@
       background-color: lightblue;
     }
   }
+
+  &__vote {
+    display: flex;
+    align-items: center;
+  }
+
+  &__vote-actions {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
 }

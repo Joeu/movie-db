@@ -1,7 +1,8 @@
 import React from "react";
-import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { addToWatchlist } from "../../reducers/slices/watchlist";
+import MovieActions from "../MovieActions";
+import { formatRate } from "../../utils/formatter";
+import { MdStarRate } from "react-icons/md";
 
 type CardProps = {
   item: any;
@@ -10,15 +11,9 @@ type CardProps = {
 const Card = (props: CardProps) => {
   const { item } = props;
   const navigate = useNavigate();
-  const dispatch = useDispatch();
 
   const handleCardClick = () => {
     navigate(`/movies/${item.id}`);
-  };
-
-  const handleBookmarkClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.stopPropagation();
-    dispatch(addToWatchlist(item));
   };
 
   return (
@@ -27,14 +22,19 @@ const Card = (props: CardProps) => {
         <p>{item.title}</p>
       </div>
       <div className="card__cover">
-        <button onClick={handleBookmarkClick}>Add</button>
         <div>
           <img
             src={`https://image.tmdb.org/t/p/w200${item.poster_path}`}
             alt={`Poster for ${item.title}`}
           />
         </div>
-        <div>{Math.round(item.vote_average * 10) / 10}</div>
+        <div className="card__vote-actions">
+          <div className="card__vote">
+            <MdStarRate size={16} />
+            <span>{formatRate(item.vote_average)}</span>
+          </div>
+          <MovieActions movie={item} />
+        </div>
       </div>
     </section>
   );

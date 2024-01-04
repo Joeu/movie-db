@@ -17,7 +17,7 @@ const AvailableOn: React.FC<AvailableOnProps> = ({ movieId }) => {
 
   return (
     <div className="available_on">
-      {data.rent ? (
+      {data?.rent ? (
         <>
           <div className="available_on__logos">
             {data.rent?.map((provider: any, idx: number) => (

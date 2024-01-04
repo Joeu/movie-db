@@ -1,8 +1,10 @@
-import { createContext, useEffect, useState } from "react";
+import { ReactNode, createContext, useEffect, useState } from "react";
 
 export const PreferencesContext = createContext({});
 
-export const PreferencesProvider = (props: any) => {
+export const PreferencesProvider: React.FC<{ children: ReactNode }> = ({
+  children,
+}) => {
   const [currentTheme, setCurrentTheme] = useState("dark");
 
   const toggleTheme = () => {
@@ -18,7 +20,7 @@ export const PreferencesProvider = (props: any) => {
 
   return (
     <PreferencesContext.Provider value={{ theme: currentTheme, toggleTheme }}>
-      {props.children}
+      {children}
     </PreferencesContext.Provider>
   );
 };

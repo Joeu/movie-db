@@ -15,6 +15,8 @@ export enum Country {
   US = "US",
 }
 
+export type ActionType = "watchlist" | "watched" | "remove";
+
 export type ImageSize =
   | "w92"
   | "w154"

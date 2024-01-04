@@ -1,13 +1,11 @@
-import React, {
-  forwardRef,
-  useEffect,
-  useImperativeHandle,
-  useState,
-} from "react";
+import React, { forwardRef, useImperativeHandle, useState } from "react";
 import { MdCheckCircle, MdClose, MdError } from "react-icons/md";
+import { useDispatch } from "react-redux";
+import { clearNotifications } from "../../reducers/slices/watchlist";
 
 type SnackbarProps = {
   content: any;
+  setContent: any;
 };
 
 export type SnackbarMethods = {
@@ -18,21 +16,22 @@ export type SnackbarMethods = {
 const Snackbar: React.ForwardRefRenderFunction<
   SnackbarMethods,
   SnackbarProps
-> = ({ content }, ref): JSX.Element => {
+> = ({ content, setContent }, ref): JSX.Element => {
   const [isVisible, setIsVisible] = useState(false);
 
-  // useEffect(() => {
-  //   const timeout = setTimeout(() => {
-  //     setIsVisible(false);
-  //   }, 3000);
+  const dispatch = useDispatch();
 
-  //   return () => clearTimeout(timeout);
-  // });
+  const handleClose = () => {
+    setIsVisible(false);
+    setContent(null);
+    dispatch(clearNotifications());
+  };
 
   useImperativeHandle(ref, () => ({
     show: () => setIsVisible(true),
     hide: () => setIsVisible(false),
   }));
+
   return (
     <>
       {isVisible && (
@@ -48,7 +47,7 @@ const Snackbar: React.ForwardRefRenderFunction<
             <MdClose
               className="snackbar__close-btn"
               size={20}
-              onClick={() => setIsVisible(false)}
+              onClick={handleClose}
             />
           </>
         </div>

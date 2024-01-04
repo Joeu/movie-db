@@ -6,6 +6,8 @@ import AvailableOn from "../AvailableOn";
 import Cast from "../Cast/Cast";
 import { MovieDetailsParams } from "../../types/routeTypes";
 import Loading from "../Loading";
+import { formatCurrency, formatDate, formatRate } from "../../utils/formatter";
+import MovieActions from "../MovieActions";
 
 const MovieDetails = () => {
   const { movieId } = useParams<MovieDetailsParams>();
@@ -35,6 +37,9 @@ const MovieDetails = () => {
           />
         </div>
         <AvailableOn movieId={movieDetails.id} />
+        <div className="movie_details__actions">
+          <MovieActions movie={movieDetails} />
+        </div>
       </div>
 
       <div className="movie_details__title">{movieDetails.title}</div>
@@ -48,9 +53,10 @@ const MovieDetails = () => {
               </span>
             ))}
           </div>
-          <div>Release date: {movieDetails.release_date}</div>
-          <div>{movieDetails.vote_average}</div>
-          <div>{movieDetails.revenue}</div>
+          <div>{`${movieDetails.runtime} min`}</div>
+          <div>Release date: {formatDate(movieDetails.release_date)}</div>
+          <div>{formatRate(movieDetails.vote_average)}</div>
+          <div>{formatCurrency(movieDetails.revenue)}</div>
         </div>
         <a href={movieDetails.homepage}>Official website</a>
         <div>{movieDetails.overview}</div>

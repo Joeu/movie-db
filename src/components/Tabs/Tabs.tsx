@@ -4,11 +4,15 @@ import { getWatched } from "../../reducers/slices/watched";
 import { getWatchlist } from "../../reducers/slices/watchlist";
 import List from "../List";
 import TabButton from "./TabButton/TabButton";
+import { useActions } from "../../hooks/useActions";
 
 const Tabs = () => {
+  const { setCurrentActions } = useActions();
   const [selected, setSelected] = useState("watchlist");
   const watched = useSelector(getWatched);
   const watchlist = useSelector(getWatchlist);
+
+  setCurrentActions(selected);
 
   return (
     <div className="tab-container">
