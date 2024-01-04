@@ -1,6 +1,8 @@
-main {
+.main-content {
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
   flex: 1;
   min-height: 90vh;
+  width: 1200px;
 }

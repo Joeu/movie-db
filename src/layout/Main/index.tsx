@@ -18,7 +18,7 @@ const Main = (props: MainProps) => {
     showNotification(watchlistNotification);
   }, [showNotification, watchlistNotification]);
 
-  return <main id="main-content">{props.children}</main>;
+  return <main className="main-content">{props.children}</main>;
 };
 
 export default Main;

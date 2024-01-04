@@ -8,14 +8,14 @@ type GridProps = {
 const Grid = (props: GridProps) => {
   const { data } = props;
   return (
-    <>
+    <section className="grid">
       <h1>Trending this week</h1>
-      <section className="grid">
+      <div className="grid__cards">
         {data?.map((item) => (
           <Card key={item.id} item={item} />
         ))}
-      </section>
-    </>
+      </div>
+    </section>
   );
 };
 
